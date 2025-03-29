@@ -1,0 +1,53 @@
+<div class="pokemon-card">
+    <div class="pokemon-header">
+      <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+      <p class="pokemon-nickname" *ngIf="pokemon.nickname">Nickname: {{ pokemon.nickname }}</p>
+    </div>
+  
+    <div class="pokemon-details">
+      <div class="pokemon-statistics">
+        <p><strong>Nature:</strong> {{ pokemon.nature }}</p>
+        <p><strong>Ability:</strong> {{ pokemon.talent }}</p>
+        <p><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+        <p><strong>Tera Type:</strong> {{ pokemon.teraType || 'None' }}</p>
+      </div>
+  
+      <div class="pokemon-stats">
+        <h3>Base Stats</h3>
+        <ul>
+          <li>HP: {{ pokemon.baseStats['hp'] }}</li>
+          <li>Attack: {{ pokemon.baseStats['attack'] }}</li>
+          <li>Defense: {{ pokemon.baseStats['defense'] }}</li>
+          <li>Speed: {{ pokemon.baseStats['speed'] }}</li>
+        </ul>
+      </div>
+  
+      <div class="pokemon-ivs">
+        <h3>IVs</h3>
+        <ul>
+          <li>HP: {{ pokemon.ivs['hp'] }}</li>
+          <li>Attack: {{ pokemon.ivs['attack'] }}</li>
+          <li>Defense: {{ pokemon.ivs['defense'] }}</li>
+          <li>Speed: {{ pokemon.ivs['speed'] }}</li>
+        </ul>
+      </div>
+  
+      <div class="pokemon-evs">
+        <h3>EVs</h3>
+        <ul>
+          <li>HP: {{ pokemon.evs['hp'] }}</li>
+          <li>Attack: {{ pokemon.evs['attack'] }}</li>
+          <li>Defense: {{ pokemon.evs['defense'] }}</li>
+          <li>Speed: {{ pokemon.evs['speed'] }}</li>
+        </ul>
+      </div>
+  
+      <div class="pokemon-moves">
+        <h3>Moves</h3>
+        <ul>
+          <li *ngFor="let move of pokemon.moves">{{ move }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

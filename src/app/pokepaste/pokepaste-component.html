@@ -1,0 +1,4 @@
+<!--<p>{{pokepaste}}</p>-->
+@for (pokemon of team; track pokemon.name) {
+    <app-pokemon [pokemon]="pokemon"/>
+}
