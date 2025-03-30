@@ -2,14 +2,17 @@ export class Pokemon {
   
   name: string | null = null;
   nickname: string | null = null;
-  talent: string | null = null;
+  ability: string | null = null;
   nature: string | null = null;
   heldItem: string | null = null;
   teraType: string | null = null;
-  baseStats: { [key: string]: number } = { hp: 0, attack: 0, defense: 0, speed: 0 };
-  ivs: { [key: string]: number } = { hp: 0, attack: 0, defense: 0, speed: 0 };
-  evs: { [key: string]: number } = { hp: 0, attack: 0, defense: 0, speed: 0 };
+  baseStats: { [key: string]: number } = { HP: 0, Atk: 0, Def: 0, SpA: 0, SpD: 0, Spe: 0 };
+  ivs: { [key: string]: number } = { HP: 31, Atk: 31, Def: 31, SpA: 31, SpD: 31, Spe: 31 };
+  evs: { [key: string]: number } = { HP: 0, Atk: 0, Def: 0, SpA: 0, SpD: 0, Spe: 0 };
+  
   moves: string[] = [];
+  level: number = 100;
+  shiny: boolean = false;
   
   constructor() {}
 
@@ -17,7 +20,7 @@ export class Pokemon {
     return `
       Name: ${this.name || 'None'}
       Nickname: ${this.nickname || 'None'}
-      Talent: ${this.talent || 'None'}
+      Talent: ${this.ability || 'None'}
       Nature: ${this.nature || 'None'}
       Held Item: ${this.heldItem || 'None'}
       Tera Type: ${this.teraType || 'None'}
