@@ -1,0 +1,13 @@
+
+.teamContainer
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+app-pokemon
+{
+    width: 30%;
+}

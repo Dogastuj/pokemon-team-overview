@@ -14,14 +14,19 @@ export class HomepageComponent {
 
   constructor(private router: Router, private sharePokpasteService: SharePokepasteService) { }
 
-sendInput(pokepaste: string) {
-    this.sharePokpasteService.changePaste(pokepaste);
+  sendInput(pokepaste: string) {
+      this.sharePokpasteService.changePaste(pokepaste);
 
-    //console.log(pokepaste);
+      //console.log(pokepaste);
 
-    this.router.navigateByUrl('team-overview');
+      this.router.navigateByUrl('team-overview');
 
-  }
+    }
+
+    autoResize(textarea: HTMLTextAreaElement) {
+      textarea.style.height = "auto"; 
+      textarea.style.height = textarea.scrollHeight + "px"; 
+    }
   
 }
 
