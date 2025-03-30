@@ -17,7 +17,7 @@ export class HomepageComponent {
 sendInput(pokepaste: string) {
     this.sharePokpasteService.changePaste(pokepaste);
 
-    console.log(pokepaste);
+    //console.log(pokepaste);
 
     this.router.navigateByUrl('team-overview');
 

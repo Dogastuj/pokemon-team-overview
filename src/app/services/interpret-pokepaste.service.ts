@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
+import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,91 +9,125 @@ export class InterpretPokepasteService {
 
   constructor() {}
 
-  interpretPokepaste(pokepaste: string): Pokemon[] {
-    const pokemonLines = pokepaste.split('\n');
-    const pokemonArray: Pokemon[] = [];
+  interpretPokepaste(pokepaste: String): Pokemon[] {
+    const team: Pokemon[] = [];
 
-    let currentPokemon: Pokemon | null = null;
+    var pokepasteTable : String[][] = this.getPokepasteTable(pokepaste);
 
-    pokemonLines.forEach((line) => {
-      const trimmedLine = line.trim();
 
-      // Si la ligne contient un nom de Pokémon et un objet
-      if (trimmedLine.match(/^[A-Za-z]+/)) {
-        if (currentPokemon) {
-          pokemonArray.push(currentPokemon);  // Ajouter le Pokémon précédent à l'array
-        }
+    pokepasteTable.forEach(pokemonPaste => {
+      var pokemon: Pokemon = new Pokemon();
 
-        // Initialisation d'un nouveau Pokémon
-        currentPokemon = new Pokemon();
-        currentPokemon.name = trimmedLine.split(' ')[0]; // Nom du Pokémon
-        currentPokemon.nickname = null;
-        currentPokemon.talent = null;
-        currentPokemon.nature = null;
-        currentPokemon.heldItem = null;
-        currentPokemon.teraType = null;
-        currentPokemon.baseStats = { hp: 0, attack: 0, defense: 0, speed: 0 };
-        currentPokemon.ivs = { hp: 31, attack: 31, defense: 31, speed: 31 };
-        currentPokemon.evs = { hp: 0, attack: 0, defense: 0, speed: 0 };
-        currentPokemon.moves = [];
+      
+      firstLineProcess(pokemonPaste.shift()!, pokemon);
+      console.log('pokemon :');
+      console.log(pokemon);
 
-        // Extraction de l'objet tenu
-        const itemMatch = trimmedLine.match(/@ (.*)/);
-        if (itemMatch) {
-          currentPokemon.heldItem = itemMatch[1];
-        }
-      }
-
-      if (currentPokemon) {
-        // Traitement de l'Ability
-        const abilityMatch = trimmedLine.match(/^Ability:\s*(.*)/);
-        if (abilityMatch) {
-          currentPokemon.talent = abilityMatch[1];
-        }
-
-        // Traitement du Level
-        const levelMatch = trimmedLine.match(/^Level:\s*(\d+)/);
-        if (levelMatch) {
-          // Vous pouvez utiliser le niveau pour d'autres logiques si nécessaire.
-        }
-
-        // Traitement de Tera Type
-        const teraTypeMatch = trimmedLine.match(/^Tera Type:\s*(.*)/);
-        if (teraTypeMatch) {
-          currentPokemon.teraType = teraTypeMatch[1];
-        }
-
-        // Traitement des EVs
-        const evMatch = trimmedLine.match(/^EVs:\s*(.*)/);
-        if (evMatch) {
-          const evs = evMatch[1].split('/').map(ev => ev.trim());
-          if (evs.length === 4) {
-            currentPokemon.evs['hp'] = +evs[0].split(' ')[0];
-            currentPokemon.evs['attack'] = +evs[1].split(' ')[0];
-            currentPokemon.evs['defense'] = +evs[2].split(' ')[0];
-            currentPokemon.evs['speed'] = +evs[3].split(' ')[0];
-          }
-        }
-
-        // Traitement de la Nature
-        const natureMatch = trimmedLine.match(/^([A-Za-z]+) Nature/);
-        if (natureMatch) {
-          currentPokemon.nature = natureMatch[1];
-        }
-
-        // Traitement des Moves
-        const movesMatch = trimmedLine.match(/^-\s*(.*)/);
-        if (movesMatch) {
-          currentPokemon.moves.push(movesMatch[1]);
-        }
-      }
+      /*
+      pokemonPaste.forEach(lineOfThePaste => {
+        
+      }); */
     });
 
-    // Ajouter le dernier Pokémon si nécessaire
-    if (currentPokemon) {
-      pokemonArray.push(currentPokemon);
+    
+
+
+    
+
+    return team;
+  }
+
+  /**
+   * 
+   * @param pokepaste a pokepaste String
+   * @returns a table of Strings tables, where each table is a pokemon's paste
+   */
+  private getPokepasteTable(pokepaste: String): String[][]{
+
+    var pokepasteTable: String[][] = [];
+
+    var pokepasteLines = pokepaste.split('\n');
+
+    var currentPokemon :String[]= [];
+
+    var currentLine: String;
+    
+    for (const line of pokepasteLines) {
+      if(line === ''){
+        if(currentPokemon.length > 0){
+          pokepasteTable.push(currentPokemon);
+        }
+        currentPokemon = [];
+      } else {
+        currentPokemon.push(line);
+      }  
     }
 
-    return pokemonArray;
+    return pokepasteTable
+
+    
   }
 }
+  
+  
+    /**
+    * Process the first line of the pokemon paste to extract the nickname, name and held item
+    * @param firstLine the first line of the pokemon paste
+    * @param pokemon the pokemon object to fill with the data
+    */
+function firstLineProcess(firstLine: String , pokemon: Pokemon) {
+
+  var theFirstLine = firstLine;
+
+  if(pokemonHeldingAnItem(firstLine)){
+    console.log('the pokemon is holding an item');
+    var firstLineParts = firstLine.split('@');
+
+    if (firstLineParts) {
+      pokemon.heldItem = firstLineParts[1].trim();
+
+  
+    }
+
+    theFirstLine = firstLineParts[0];
+
+  } else {
+    console.log('the pokemon isnt holding an item');
+
+  }
+
+  if(pokemonHasNickname(theFirstLine)){
+    console.log('the pokemon has a nickname');
+    var nicknameAndName = theFirstLine.split('(');
+    console.log('nicknameAndName :');
+    console.log(nicknameAndName);
+
+      pokemon.nickname = nicknameAndName[0].trim();
+      pokemon.name = nicknameAndName[1].trim().slice(0, -1);
+
+    } else{
+      console.log('the doesnt pokemon have a nickname');
+      pokemon.name = theFirstLine.trim();
+      pokemon.nickname = null;
+    }
+        
+
+      
+
+  
+  }
+
+
+/**
+ * 
+ * @param firstLine the first line of the pokemon paste
+ * @returns true if the pokemon is holding an item, false otherwise
+ */
+function pokemonHeldingAnItem(firstLine: String) : boolean {
+  return firstLine.includes('@');
+}
+
+function pokemonHasNickname(pokemonName: String) {
+  return pokemonName.includes('(');
+}
+

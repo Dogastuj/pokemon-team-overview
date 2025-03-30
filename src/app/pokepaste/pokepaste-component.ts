@@ -15,8 +15,9 @@ import { PokemonComponent } from "../pokemon/pokemon.component";
 })
 
 export class PokepasteComponent {
+  
 onPokemonCardClick(_t2: Pokemon) {
-throw new Error('Method not implemented.');
+  throw new Error('Method not implemented.');
 }
   
   pokepaste!: string;
