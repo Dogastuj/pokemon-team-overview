@@ -12,4 +12,5 @@ export class PokemonComponent {
 
   @Input() pokemon!:Pokemon;
 
+  
 }

@@ -46,7 +46,7 @@ export class InterpretPokepasteService {
         
         
       });
-      console.log('pokemon :');
+      team.push(pokemon); // add the pokemon to the team
       console.log(pokemon);
     });
 
