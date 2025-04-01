@@ -2,6 +2,7 @@ export class Pokemon {
   
   name: string | null = null;
   nickname: string | null = null;
+  imageUrl: string | null = null;
   ability: string | null = null;
   nature: string | null = null;
   heldItem: string | null = null;

@@ -1,34 +1,37 @@
 <div class="team-container">
-  <div class="pokemon-card">
-      <div class="pokemon-header">
-          <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-          <p class="pokemon-nickname" *ngIf="pokemon.nickname">Nickname: {{ pokemon.nickname }}</p>
-      </div>
-
-      <div class="pokemon-details">
-          <div class="pokemon-statistics">
-              <p><strong>Nature:</strong> {{ pokemon.nature }}</p>
-              <p><strong>Ability:</strong> {{ pokemon.ability }}</p>
-              <p><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
-              <p><strong>Tera Type:</strong> {{ pokemon.teraType || 'None' }}</p>
-          </div>
-          <div class="pokemon-evs">
-              <h3>EVs</h3>
-              <ul>
-                  <li>HP: {{ pokemon.evs['HP'] }}</li>
-                  <li>Attack: {{ pokemon.evs['Atk'] }}</li>
-                  <li>Defense: {{ pokemon.evs['Def'] }}</li>
-                  <li>Special Attack: {{ pokemon.evs['SpA'] }}</li>
-                  <li>Special Defense: {{ pokemon.evs['SpD'] }}</li>
-                  <li>Speed: {{ pokemon.evs['Spe'] }}</li>
-              </ul>
-          </div>
-          <div class="pokemon-moves">
-              <h3>Moves</h3>
-              <ul>
-                  <li *ngFor="let move of pokemon.moves">{{ move }}</li>
-              </ul>
-          </div>
-      </div>
+    <div class="pokemon-card">
+        <div class="pokemon-header">
+            <h2 class="pokemon-name">{{ pokemon.name }}</h2>
+            <p class="pokemon-nickname" *ngIf="pokemon.nickname">Nickname: {{ pokemon.nickname }}</p>
+  
+           <!-- <img src={{ pokemon.imageUrl }}> -->
+        </div>
+  
+        <div class="pokemon-details">
+            <div class="pokemon-statistics">
+                <p><strong>Nature:</strong> {{ pokemon.nature }}</p>
+                <p><strong>Ability:</strong> {{ pokemon.ability }}</p>
+                <p><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+                <p><strong>Tera Type:</strong> {{ pokemon.teraType || 'None' }}</p>
+            </div>
+            <div class="pokemon-evs">
+                <h3>EVs</h3>
+                <ul>
+                    <li>HP: {{ pokemon.evs['HP'] }}</li>
+                    <li>Attack: {{ pokemon.evs['Atk'] }}</li>
+                    <li>Defense: {{ pokemon.evs['Def'] }}</li>
+                    <li>Special Attack: {{ pokemon.evs['SpA'] }}</li>
+                    <li>Special Defense: {{ pokemon.evs['SpD'] }}</li>
+                    <li>Speed: {{ pokemon.evs['Spe'] }}</li>
+                </ul>
+            </div>
+            <div class="pokemon-moves">
+                <h3>Moves</h3>
+                <ul>
+                    <li *ngFor="let move of pokemon.moves">{{ move }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
   </div>
-</div>
+  

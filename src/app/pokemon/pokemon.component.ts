@@ -1,16 +1,24 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../models/pokemon.model';
+import { PokeAPIService } from '../services/poke-api.service'; 
 
 @Component({
   selector: 'app-pokemon',
-  imports: [CommonModule  ],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './pokemon.component.html',
-  styleUrl: './pokemon.component.scss'
+  styleUrls: ['./pokemon.component.scss']
 })
-export class PokemonComponent {
+export class PokemonComponent implements OnInit {
 
-  @Input() pokemon!:Pokemon;
+  @Input() pokemon!: Pokemon;
 
-  
+  constructor(private pokeAPIService: PokeAPIService) {}
+
+  ngOnInit(): void {
+    if (!this.pokemon.imageUrl) { 
+      this.pokeAPIService.setImgOnPokemon(this.pokemon);  
+    }
+  }
 }
