@@ -1,34 +1,25 @@
 <div class="team-container">
-    <div class="pokemon-card">
-        <div class="pokemon-header">
-            <h2 class="pokemon-name">{{ pokemon.name }}</h2>
-            <p class="pokemon-nickname" *ngIf="pokemon.nickname">Nickname: {{ pokemon.nickname }}</p>
-  
+   
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
             <img [src]="pokemon.imageUrl">
-             
-        </div>
-  
-        <div class="pokemon-details">
-            <div class="pokemon-statistics">
-                <p><strong>Nature:</strong> {{ pokemon.nature }}</p>
-                <p><strong>Ability:</strong> {{ pokemon.ability }}</p>
-                <p><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
-                <p><strong>Tera Type:</strong> {{ pokemon.teraType || 'None' }}</p>
-            </div>
-            <div class="pokemon-evs">
-                <h3>EVs</h3>
-                    <p>HP: {{ pokemon.evs['HP'] }}</p>
-                    <p>Attack: {{ pokemon.evs['Atk'] }}</p>
-                    <p>Defense: {{ pokemon.evs['Def'] }}</p>
-                    <p>Special Attack: {{ pokemon.evs['SpA'] }}</p>
-                    <p>Special Defense: {{ pokemon.evs['SpD'] }}</p>
-                    <p>Speed: {{ pokemon.evs['Spe'] }}</p>
-            </div>
-            <div class="pokemon-moves">
-                <h3>Moves</h3>
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ pokemon.name }} </h5>
+              <p class="card-text"><strong>Nature:</strong> {{ pokemon.nature }}</p>
+              <p class="card-text"><strong>Ability:</strong> {{ pokemon.ability }}</p>
+              <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+              <div class="pokemon-moves">
+                <h5>Moves :</h5>
                     <p *ngFor="let move of pokemon.moves">{{ move }}</p>
             </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
+
+
   </div>
   

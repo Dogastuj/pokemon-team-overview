@@ -14,8 +14,9 @@ export class PokemonComponent implements OnInit {
 
   @Input() pokemon!: Pokemon;
 
-  constructor(private pokeAPIService: PokeAPIService) {}
+  constructor() {}
 
   ngOnInit(): void {
+    
   }
 }

@@ -17,18 +17,29 @@ export class Pokemon {
   
   constructor() {}
 
-  getPokemonInfo(): string {
-    return `
-      Name: ${this.name || 'None'}
-      Nickname: ${this.nickname || 'None'}
-      Talent: ${this.ability || 'None'}
-      Nature: ${this.nature || 'None'}
-      Held Item: ${this.heldItem || 'None'}
-      Tera Type: ${this.teraType || 'None'}
-      Base Stats: ${JSON.stringify(this.baseStats)}
-      IVs: ${JSON.stringify(this.ivs)}
-      EVs: ${JSON.stringify(this.evs)}
-      Moves: ${this.moves.join(', ') || 'None'}
-    `;
+  getEVsHTMLText(): string {
+    var text = "";
+    for(var ev in this.evs){
+      if(this.evs[ev] !== 0){
+        if(text.length > 0){
+          text += " / "
+        }
+        text += this.evs[ev] + " " + ev;
+      }
+    }
+    return text;
+  }
+
+  getIVsHTMLText(): string {
+    var text = "";
+    for(var iv in this.ivs){
+      if(this.ivs[iv] !== 31){
+        if(text.length > 0){
+          text += " / "
+        }
+        text += this.ivs[iv] + " " + iv;
+      }
+    }
+    return text;
   }
 }

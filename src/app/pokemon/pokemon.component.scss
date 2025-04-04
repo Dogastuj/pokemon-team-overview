@@ -16,40 +16,6 @@
   overflow: hidden;
 }
 
-.pokemon-header {
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-.pokemon-name {
-  font-size: 1.4em;
-  font-weight: bold;
-}
-
-.pokemon-nickname {
-  font-style: italic;
-  color: #888;
-}
-
-.pokemon-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.pokemon-statistics,
-.pokemon-stats,
-.pokemon-ivs,
-.pokemon-evs,
-.pokemon-moves {
-  font-size: 0.9em;
-  line-height: 1.4;
-}
-
-h3 {
-  color: #333;
-  font-size: 1.1em;
-  margin-bottom: 5px;
-}
 
 .pokemon-card * {
   line-height: 1;
