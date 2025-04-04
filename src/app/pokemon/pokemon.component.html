@@ -4,7 +4,8 @@
             <h2 class="pokemon-name">{{ pokemon.name }}</h2>
             <p class="pokemon-nickname" *ngIf="pokemon.nickname">Nickname: {{ pokemon.nickname }}</p>
   
-           <!-- <img src={{ pokemon.imageUrl }}> -->
+            <img [src]="pokemon.imageUrl">
+             
         </div>
   
         <div class="pokemon-details">
@@ -16,20 +17,16 @@
             </div>
             <div class="pokemon-evs">
                 <h3>EVs</h3>
-                <ul>
-                    <li>HP: {{ pokemon.evs['HP'] }}</li>
-                    <li>Attack: {{ pokemon.evs['Atk'] }}</li>
-                    <li>Defense: {{ pokemon.evs['Def'] }}</li>
-                    <li>Special Attack: {{ pokemon.evs['SpA'] }}</li>
-                    <li>Special Defense: {{ pokemon.evs['SpD'] }}</li>
-                    <li>Speed: {{ pokemon.evs['Spe'] }}</li>
-                </ul>
+                    <p>HP: {{ pokemon.evs['HP'] }}</p>
+                    <p>Attack: {{ pokemon.evs['Atk'] }}</p>
+                    <p>Defense: {{ pokemon.evs['Def'] }}</p>
+                    <p>Special Attack: {{ pokemon.evs['SpA'] }}</p>
+                    <p>Special Defense: {{ pokemon.evs['SpD'] }}</p>
+                    <p>Speed: {{ pokemon.evs['Spe'] }}</p>
             </div>
             <div class="pokemon-moves">
                 <h3>Moves</h3>
-                <ul>
-                    <li *ngFor="let move of pokemon.moves">{{ move }}</li>
-                </ul>
+                    <p *ngFor="let move of pokemon.moves">{{ move }}</p>
             </div>
         </div>
     </div>

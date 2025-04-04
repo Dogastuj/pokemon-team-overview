@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from '../models/pokemon.model';
-import { first } from 'rxjs';
+import { Pokemon } from '../models/pokemon.model'
+import { PokeAPIService } from './poke-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterpretPokepasteService {
 
-  constructor() {}
+  constructor(private pokepasteAPI: PokeAPIService) {}
 
   interpretPokepaste(pokepaste: String): Pokemon[] {
     const team: Pokemon[] = [];
@@ -23,7 +23,7 @@ export class InterpretPokepasteService {
       
       pokemonPaste.forEach(lineOfThePaste => { //for the rest of the lines
 
-        if(isKeyValueLine(lineOfThePaste)){ //Some of the value are key-value pairs, so we have a traitment for those
+        if(this.isKeyValueLine(lineOfThePaste)){ //Some of the value are key-value pairs, so we have a traitment for those
 
           var keyValue = lineOfThePaste.split(':');
 
@@ -34,14 +34,14 @@ export class InterpretPokepasteService {
             this.bindKeyValue(key, value, pokemon);
           }
         }
-        else if(isAttack(lineOfThePaste)){ //attacks have a special syntax, so we have a traitment for it
-          bindAttack(lineOfThePaste, pokemon);
+        else if(this.isAttack(lineOfThePaste)){ //attacks have a special syntax, so we have a traitment for it
+          this.bindAttack(lineOfThePaste, pokemon);
         }
 
         // We have to check if the line is an attack before checking is its a nature, because it can create problems if an attack name contains 'Nature' (for example 'Nature Power')
 
-        else if(isNature(lineOfThePaste)){ //nature has a special syntax, so we have a traitment for it
-          bindNature(lineOfThePaste, pokemon);
+        else if(this.isNature(lineOfThePaste)){ //nature has a special syntax, so we have a traitment for it
+          this.bindNature(lineOfThePaste, pokemon);
         }
         
         
@@ -50,8 +50,7 @@ export class InterpretPokepasteService {
       console.log(pokemon);
     });
 
-    
-
+    this.setImagesOnTeam(team);
     return team;
   }
 
@@ -192,31 +191,38 @@ export class InterpretPokepasteService {
       });
 
   }
-}
 
-function isKeyValueLine(lineOfThePaste: String) {
-  return lineOfThePaste.includes(':');
-}
 
-function isNature(lineOfThePaste: String): boolean {
-  return lineOfThePaste.includes('Nature');
-}
+  isKeyValueLine(lineOfThePaste: String) {
+    return lineOfThePaste.includes(':');
+  }
 
-/**
- * 
- * @param lineOfThePaste a line of the pokemon paste that contains the nature
- * @param pokemon the pokemon to bind the nature to
- */
-function bindNature(lineOfThePaste: String, pokemon: Pokemon): void {
-  var nature = lineOfThePaste.split(' ')[0].trim();
-  pokemon.nature = nature;
-}
+  isNature(lineOfThePaste: String): boolean {
+    return lineOfThePaste.includes('Nature');
+  }
 
-function bindAttack(lineOfThePaste: String, pokemon: Pokemon) : void{
-  pokemon.moves.push(lineOfThePaste.substring(1).trim());
-}
+  /**
+   * 
+   * @param lineOfThePaste a line of the pokemon paste that contains the nature
+   * @param pokemon the pokemon to bind the nature to
+   */
+  bindNature(lineOfThePaste: String, pokemon: Pokemon): void {
+    var nature = lineOfThePaste.split(' ')[0].trim();
+    pokemon.nature = nature;
+  }
 
-function isAttack(lineOfThePaste: String) : boolean {
-  return lineOfThePaste.startsWith("-");
-}
+  bindAttack(lineOfThePaste: String, pokemon: Pokemon) : void{
+    pokemon.moves.push(lineOfThePaste.substring(1).trim());
+  }
 
+  isAttack(lineOfThePaste: String) : boolean {
+    return lineOfThePaste.startsWith("-");
+  }
+
+  setImagesOnTeam(team: Pokemon[]) {
+    team.forEach(pokemon => {
+      this.pokepasteAPI.setImgOnPokemon(pokemon); 
+    });
+  }
+
+}

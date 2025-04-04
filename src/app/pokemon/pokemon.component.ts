@@ -17,8 +17,5 @@ export class PokemonComponent implements OnInit {
   constructor(private pokeAPIService: PokeAPIService) {}
 
   ngOnInit(): void {
-    if (!this.pokemon.imageUrl) { 
-      this.pokeAPIService.setImgOnPokemon(this.pokemon);  
-    }
   }
 }
