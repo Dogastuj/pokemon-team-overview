@@ -19,4 +19,8 @@ export class SharePokepasteService {
     return this.pokepaste;
   }
 
+  isPokepasteShared(): boolean{
+    return this.isShared;
+  }
+
 }

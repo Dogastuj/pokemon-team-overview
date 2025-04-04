@@ -9,7 +9,7 @@ export class InterpretPokepasteService {
 
   constructor(private pokepasteAPI: PokeAPIService) {}
 
-  interpretPokepaste(pokepaste: String): Pokemon[] {
+  async interpretPokepaste(pokepaste: String): Promise<Pokemon[]> {
     const team: Pokemon[] = [];
 
     var pokepasteTable : String[][] = this.getPokepasteTable(pokepaste);
@@ -49,10 +49,11 @@ export class InterpretPokepasteService {
       team.push(pokemon); // add the pokemon to the team
       console.log(pokemon);
     });
-
-    this.setImagesOnTeam(team);
+    
+    await this.setImagesOnTeam(team);
     return team;
   }
+ 
 
   /**
    * 
@@ -219,10 +220,15 @@ export class InterpretPokepasteService {
     return lineOfThePaste.startsWith("-");
   }
 
-  setImagesOnTeam(team: Pokemon[]) {
-    team.forEach(pokemon => {
-      this.pokepasteAPI.setImgOnPokemon(pokemon); 
-    });
+  async setImagesOnTeam(team: Pokemon[]): Promise<void> {
+    for (const pokemon of team) {
+      try {
+        await this.pokepasteAPI.setImgOnPokemon(pokemon);
+      } catch (error) {
+        console.error('Error while fetching image for', pokemon.name, error);
+      }
+    }
   }
+  
 
 }

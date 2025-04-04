@@ -12,6 +12,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HomepageComponent {
 
+
   constructor(private router: Router, private sharePokpasteService: SharePokepasteService) { }
 
   sendInput(pokepaste: string) {

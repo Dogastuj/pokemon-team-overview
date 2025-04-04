@@ -1,35 +1,46 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharePokepasteService } from '../services/share-pokepaste.service'; 
 import { InterpretPokepasteService } from '../services/interpret-pokepaste.service';
 import { Pokemon } from '../models/pokemon.model';
 import { PokemonComponent } from "../pokemon/pokemon.component";
-
-
+import { Router } from '@angular/router';
+import { SaveTeamsService } from '../services/save-teams.service';
 
 @Component({
   selector: 'app-pokepaste',
   standalone: true,
   imports: [PokemonComponent],
   templateUrl: './pokepaste-component.html',
-  styleUrl: './pokepaste-component.scss'
+  styleUrls: ['./pokepaste-component.scss']
 })
+export class PokepasteComponent implements OnInit {
 
-export class PokepasteComponent {
-  
-onPokemonCardClick(_t2: Pokemon) {
-  throw new Error('Method not implemented.');
-}
-  
   pokepaste!: string;
   team!: Pokemon[];
 
-  constructor(private sharePokpasteService: SharePokepasteService, private interpretPokepasteService: InterpretPokepasteService) { 
-    this.pokepaste = this.sharePokpasteService.getPaste();
-    this.team = this.interpretPokepasteService.interpretPokepaste(this.pokepaste)
-  }
+  constructor(
+    private sharePokpasteService: SharePokepasteService, 
+    private interpretPokepasteService: InterpretPokepasteService, 
+    private saveTeamsService: SaveTeamsService, 
+    private router: Router
+  ) {}
 
-  onInit() {
-    
+  async ngOnInit() {
+    if (this.sharePokpasteService.isPokepasteShared()) {
+      this.pokepaste = this.sharePokpasteService.getPaste();
+      this.team = await this.interpretPokepasteService.interpretPokepaste(this.pokepaste);
+    } else {
+      this.router.navigateByUrl('');
+    }
+
+    const imagesTable: string[] = [];
+    this.team.forEach(p => {
+      if (p.imageUrl) {
+        imagesTable.push(p.imageUrl!);
+      }
+    });
+    console.log(imagesTable);
+    this.saveTeamsService.saveTeam(this.pokepaste, imagesTable);
   }
 
 }

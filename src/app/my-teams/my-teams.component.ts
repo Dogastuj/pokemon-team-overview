@@ -1,11 +1,20 @@
 import { Component } from '@angular/core';
+import { SaveTeamsService } from '../services/save-teams.service';
+import { CommonModule } from '@angular/common';
+import { TeamPreviewComponent } from '../team-preview/team-preview.component';
 
 @Component({
   selector: 'app-my-teams',
-  imports: [],
+  imports: [CommonModule, TeamPreviewComponent],
   templateUrl: './my-teams.component.html',
-  styleUrl: './my-teams.component.scss'
+  styleUrls: ['./my-teams.component.scss']
 })
 export class MyTeamsComponent {
+  teams: string[][] = [];
 
+  constructor(private saveTeamsService: SaveTeamsService) {
+    this.teams = this.saveTeamsService.getAllTeamsPreviews();
+    console.log("teams :");
+    console.log(this.teams);
+  }
 }

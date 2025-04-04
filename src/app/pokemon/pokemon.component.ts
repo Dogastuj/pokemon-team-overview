@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Pokemon } from '../models/pokemon.model';
-import { PokeAPIService } from '../services/poke-api.service'; 
 
 @Component({
   selector: 'app-pokemon',
