@@ -36,4 +36,31 @@ export class PokeAPIService {
       console.error(err)
     }
    }
+
+   getMoveInfo(moveName: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get('https://pokeapi.co/api/v2/move/' + moveName).subscribe(
+        (response: any) => {
+          resolve(response);
+        },
+        error => {
+          reject('');
+        }
+      );
+    });
+  }
+
+    getMoveType(moveName: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http.get('https://pokeapi.co/api/v2/move/' + moveName.replace(/\s+/g, '-')).subscribe(
+        (response: any) => {
+          var moveType = response?.type?.name;
+          resolve(moveType);
+        },
+        error => {
+          reject('');
+        }
+      );
+    });
+  }
 }

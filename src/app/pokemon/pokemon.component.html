@@ -13,7 +13,11 @@
               <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
               <div class="pokemon-moves">
                 <h5>Moves :</h5>
-                    <p *ngFor="let move of pokemon.moves">{{ move }}</p>
+                  <div *ngFor="let move of pokemon.moves; let i = index " class="move-card">
+                    <p>{{ move }}</p>
+                    <img class="moveImage"[src]="'assets/moves/' + movesTypes[i] + '.png'" alt="Image de {{ move }}">
+                  </div>
+                
             </div>
             </div>
           </div>
