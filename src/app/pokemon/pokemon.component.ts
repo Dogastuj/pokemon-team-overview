@@ -14,7 +14,7 @@ export class PokemonComponent implements OnInit {
 
   @Input() pokemon!: Pokemon;
 
-  movesTypes: string[] = [];
+  movesAndTypes!: Record<string, string>;
 
   constructor(private pokeAPIService: PokeAPIService, ) {
   }
@@ -22,7 +22,7 @@ export class PokemonComponent implements OnInit {
   
   ngOnInit(): void {
     this.pokemon.moves.forEach(async move => {
-      this.movesTypes.push((await this.pokeAPIService.getMoveType(move)));
+      this.movesAndTypes = await this.pokeAPIService.getMovesType(this.pokemon.moves);
     });
     
   }
