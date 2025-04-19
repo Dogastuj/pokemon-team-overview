@@ -1,0 +1,24 @@
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img [src]="pokemon.imageUrl">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">{{ pokemon.name }} </h5>
+                <p class="card-text"><strong>Nature:</strong> {{ pokemon.nature }}</p>
+                <p class="card-text"><strong>Ability:</strong> {{ pokemon.ability }}</p>
+                <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+                <div class="pokemon-moves">
+                    <h5>Moves :</h5>
+                    <div *ngFor="let move of pokemon.moves" class="move-card">
+                        <p>{{ move }}</p>
+                        <img class="moveImage" [src]="'assets/moves/' + movesAndTypes[move] + '.png'"
+                            alt="image of the type" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

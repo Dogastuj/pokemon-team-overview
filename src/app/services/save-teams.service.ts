@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SaveTeamsService {
+
+  constructor(private router: Router){}
 
 
     saveTeam(pokepaste : string, imgPokemons : string[]) {
@@ -31,7 +34,8 @@ export class SaveTeamsService {
         const nbTeamsStr = localStorage.getItem('nbTeams');
         console.log("found "+ nbTeamsStr + " teams in local storage");
         if (nbTeamsStr === null) {
-          throw new Error("No teams saved");
+          this.router.navigateByUrl('');
+          return [];
         }
       
         const nbTeams = parseInt(nbTeamsStr, 10);
