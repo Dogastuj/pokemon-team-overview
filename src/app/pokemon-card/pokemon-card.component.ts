@@ -6,13 +6,13 @@ import { Router, RouterLink } from '@angular/router';
 import { SharePokemonService } from '../services/share-pokemon.service';
 
 @Component({
-    selector: 'app-pokemon',
+    selector: 'app-pokemon-card',
     standalone: true,
     imports: [CommonModule],
-    templateUrl: './pokemon.component.html',
-    styleUrls: ['./pokemon.component.scss']
+    templateUrl: './pokemon-card.component.html',
+    styleUrls: ['./pokemon-card.component.scss']
 })
-export class PokemonComponent implements OnInit {
+export class PokemonCardComponent implements OnInit {
 
     @Input() pokemon!: Pokemon;
 

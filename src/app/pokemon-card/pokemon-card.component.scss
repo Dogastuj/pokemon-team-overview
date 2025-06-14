@@ -1,7 +1,7 @@
 .team-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Grille fluide avec des colonnes qui s'adaptent */
-  padding: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  padding: 50px;
 }
 
 .pokemon-card {
@@ -18,11 +18,11 @@
 
 .moveImage {
   width: 80px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
-.move-card{
-  line-height: 0.5;
+p{
+  margin-bottom: 0;
 }
 
 a {

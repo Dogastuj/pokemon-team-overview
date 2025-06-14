@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { SharePokepasteService } from '../services/share-pokepaste.service'; 
 import { InterpretPokepasteService } from '../services/interpret-pokepaste.service';
 import { Pokemon } from '../models/pokemon.model';
-import { PokemonComponent } from "../pokemon/pokemon.component";
+import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { Router } from '@angular/router';
 import { SaveTeamsService } from '../services/save-teams.service';
 
 @Component({
   selector: 'app-pokepaste',
   standalone: true,
-  imports: [PokemonComponent],
+  imports: [PokemonCardComponent],
   templateUrl: './pokepaste-component.html',
   styleUrls: ['./pokepaste-component.scss']
 })
