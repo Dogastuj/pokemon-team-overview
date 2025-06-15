@@ -1,0 +1,15 @@
+<h2>{{moveInfo.name}}</h2>
+
+<h3>Power : {{moveInfo.power}}</h3>
+
+<h3>Accuracy : {{moveInfo.accuracy}}</h3>
+
+<div class="damage-class-wrapper">
+    <h3>{{moveInfo.damage_class.name}}</h3>
+    <img [src]="'assets/moves/damage-class/' + moveInfo.damage_class.name + '.png'" alt="move damage class">
+</div>
+
+<div class="type-wrapper">
+    <h3>{{moveInfo.type.name}}</h3>
+    <img [src]="'assets/moves/' + moveInfo.type.name + '.png'" alt="move damage class">
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -46,17 +47,10 @@ export class PokeAPIService {
     }
    }
 
-   getMoveInfo(moveName: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      this.http.get('https://pokeapi.co/api/v2/move/' + moveName).subscribe(
-        (response: any) => {
-          resolve(response);
-        },
-        error => {
-          reject('');
-        }
-      );
-    });
+   getMoveInfo(moveName: string): Observable<any> {
+    console.log('https://pokeapi.co/api/v2/move/' + moveName);
+    
+      return this.http.get('https://pokeapi.co/api/v2/move/' + moveName);
   }
 
   getMovesType(moves: string[]): Record<string, string>{

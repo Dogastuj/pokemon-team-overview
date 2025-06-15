@@ -12,13 +12,13 @@ import { CommonModule } from '@angular/common';
 })
 export class PokemonPageComponent {
 
-  pokemon! : Pokemon;
+  pokemon!: Pokemon;
   movesAndTypes!: Record<string, string>;
 
   constructor(
-    private sharePokemonService: SharePokemonService, 
+    private sharePokemonService: SharePokemonService,
     private router: Router
-  ) {}
+  ) { }
 
   async ngOnInit() {
     if (this.sharePokemonService.isPokemonShared()) {
@@ -29,6 +29,11 @@ export class PokemonPageComponent {
       this.router.navigateByUrl('');
     }
   }
-  
+
+  openMoveDetails(moveName: string) {
+    const moveUrlName = moveName.toLowerCase().replace(/\s+/g, '-');
+    this.router.navigateByUrl('/move/' + moveUrlName);
+  }
+
 
 }

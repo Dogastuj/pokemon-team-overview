@@ -4,7 +4,7 @@
             <img class="pokemon-image" [src]="pokemon.imageUrl">
 
             <div class="type-images">
-                <img *ngFor="let type of pokemon.types" class="type-image" [src]="'assets/moves/' + type + '.png'"
+                <img *ngFor="let type of pokemon.types" class="type-image" [src]="'{{moveInfo.damage_class.name}}{{moveInfo.damage_class.name}}{{moveInfo.damage_class.name}}moves/' + type + '.png'"
                     [alt]="type + ' type'" />
             </div>
         </div>
