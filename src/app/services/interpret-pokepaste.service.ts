@@ -119,7 +119,7 @@ export class InterpretPokepasteService {
 
       } else{
         pokemon.name = theFirstLine.trim();
-        pokemon.nickname = null;
+        pokemon.nickname = "";
       }
   }
 

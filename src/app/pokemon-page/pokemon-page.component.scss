@@ -2,14 +2,19 @@
     padding-inline: 5%;
 
     .top-left {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
         img.pokemon-image {
-            width: 60%;
+            width: 40%;
             aspect-ratio: 1 / 1;
             object-fit: contain;
         }
 
         .type-images {
-            width: 60%;
+            width: 40%;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -55,7 +60,6 @@
 
     .top-right {
 
-        padding-left: 10%;
         width: 60%;
 
         .infos {

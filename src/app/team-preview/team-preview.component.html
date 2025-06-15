@@ -2,5 +2,6 @@
     <div class="team-images" (click)="teamClicked()">
       <img *ngFor="let img of team" [src]="img" class="img-fluid team-img" />
     </div>
+    <button class="button" (click)="deleteTeam()" >Delete</button>
   </div>
   

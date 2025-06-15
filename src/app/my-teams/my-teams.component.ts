@@ -13,8 +13,10 @@ export class MyTeamsComponent {
   teams: string[][] = [];
 
   constructor(private saveTeamsService: SaveTeamsService) {
+    this.setTeams();
+  }
+
+  setTeams(){
     this.teams = this.saveTeamsService.getAllTeamsPreviews();
-    console.log("teams :");
-    console.log(this.teams);
   }
 }

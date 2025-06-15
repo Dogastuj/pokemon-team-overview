@@ -23,7 +23,7 @@ export class PokemonCardComponent implements OnInit {
 
     ngOnInit(): void {
         this.pokemon.moves.forEach(async move => {
-            this.movesAndTypes = await this.pokeAPIService.getMovesType(this.pokemon.moves);
+            this.movesAndTypes = this.pokeAPIService.getMovesType(this.pokemon.moves);
         });
          
     }

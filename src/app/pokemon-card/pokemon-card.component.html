@@ -26,11 +26,14 @@
 
         <div class="pokemon-moves">
             <h5>Moves :</h5>
+            @if(movesAndTypes){
             <div *ngFor="let move of pokemon.moves" class="move-wrapper">
                 <p>{{ move }}</p>
                 <img class="moveImage" [src]="'assets/moves/' + movesAndTypes[move] + '.png'" alt="image of the type" />
             </div>
+            }
         </div>
+
 
         <div class="pokemon-stats">
             <h5>Stats :</h5>

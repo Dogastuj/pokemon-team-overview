@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SharePokepasteService } from '../services/share-pokepaste.service'; 
 import { SaveTeamsService } from '../services/save-teams.service';
@@ -15,6 +15,8 @@ export class TeamPreviewComponent {
   @Input() team!: string[];
   @Input() teamId!: number;
 
+  @Output() refreshTeams = new EventEmitter<void>();
+
   constructor(private router: Router, private sharePokpasteService: SharePokepasteService, private saveTeamsService: SaveTeamsService) { }
 
   teamClicked() {
@@ -22,5 +24,11 @@ export class TeamPreviewComponent {
 
 
       this.router.navigateByUrl('team-overview');
+    }
+
+    deleteTeam() {
+      this.saveTeamsService.deleteTeam(this.teamId);
+      this.refreshTeams.emit();
+      
     }
 }
