@@ -25,8 +25,8 @@ export class PokeAPIService {
             SpD: response.stats.find((s: any) => s.stat.name === 'special-defense')?.base_stat || 0,
             Spe: response.stats.find((s: any) => s.stat.name === 'speed')?.base_stat || 0
             };
-            console.log(pokemon);
-            
+
+            pokemon.types = response.types.map((t: any) => t.type.name);
             resolve();
         },
         error => {

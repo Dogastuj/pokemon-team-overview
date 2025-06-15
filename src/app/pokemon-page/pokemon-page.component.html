@@ -1,24 +1,106 @@
-<div class="card mb-3" style="max-width: 540px;">
-    <div class="row g-0">
-        <div class="col-md-4">
-            <img [src]="pokemon.imageUrl">
+<div class="body">
+
+    
+    <div class="onRow">
+
+        <div class="top-left">
+            <img class="pokemon-image" [src]="pokemon.imageUrl">
+
+            <div class="type-images">
+                <img *ngFor="let type of pokemon.types" class="type-image" [src]="'assets/moves/' + type + '.png'"
+                    [alt]="type + ' type'" />
+            </div>
         </div>
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">{{ pokemon.name }} </h5>
-                <p class="card-text"><strong>Nature:</strong> {{ pokemon.nature }}</p>
+
+        <div class="top-right">
+            
+            <h2>{{ pokemon.name }}</h2>
+
+            <span class="infos">
+                <p class="nature"><strong>Nature:</strong> {{ pokemon.nature }}</p>
                 <p class="card-text"><strong>Ability:</strong> {{ pokemon.ability }}</p>
                 <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
-                <div class="pokemon-moves">
-                    <h5>Moves :</h5>
-                    <div *ngFor="let move of pokemon.moves" class="move-card">
-                        <p>{{ move }}</p>
-                        <img class="moveImage" [src]="'assets/moves/' + movesAndTypes[move] + '.png'"
-                            alt="image of the type" />
+            </span>
+            <p class="evs"> Evs : {{pokemon.getEVsHTMLText()}}</p>
+
+            <span class="moves">
+                <div *ngFor="let move of pokemon.moves" class="move-wrapper">
+                    <p>{{ move }}</p>
+                    <img class="moveImage" [src]="'assets/moves/' + movesAndTypes[move] + '.png'"
+                        alt="image of the type" />
+                </div>
+            </span>
+        </div>
+
+
+
+    </div>
+
+    <div class="onRow">
+
+        <div class="stats-container">
+
+            <h3>Base stats</h3>
+
+            <div *ngFor="let stat of (pokemon.baseStats | keyvalue)" class="stat-wrapper">
+
+                <p>{{ stat.key }}:</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" [style.width.%]="(stat.value / 255) * 100"
+                        [attr.aria-valuenow]="stat.value" aria-valuemin="0" aria-valuemax="200">
+                        {{ stat.value }}
                     </div>
 
                 </div>
+
             </div>
+
         </div>
+
+        <div class="stats-container">
+
+            <h3>EVs</h3>
+            <div *ngFor="let ev of (pokemon.evs | keyvalue)" class="stat-wrapper">
+                <p>{{ ev.key }}:</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" [style.width.%]="(ev.value / 252) * 100"
+                        [attr.aria-valuenow]="ev.value" aria-valuemin="0" aria-valuemax="252">
+                        {{ ev.value }}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+
+    <div class="types-relations">
+        <h3>Type Relations</h3>
+        <span class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let relation of pokemon.typesRelations | keyvalue">
+                            <th>{{ relation.key }}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <ng-container *ngFor="let relation of pokemon.typesRelations | keyvalue">
+                            <td>
+                                <div *ngIf="relation.value === 4" class="x4">x4</div>
+                                <div *ngIf="relation.value === 2" class="x2">x2</div>
+                                <div *ngIf="relation.value === 1" class="x1">x1</div>
+                                <div *ngIf="relation.value === 0.5" class="x05">x0.5</div>
+                                <div *ngIf="relation.value === 0.25" class="x025">x0.25</div>
+                                <div *ngIf="relation.value === 0" class="x0">x0</div>
+
+                            </td>
+                        </ng-container>
+            </table>
+        </span>
+    </div>
+
+
 </div>

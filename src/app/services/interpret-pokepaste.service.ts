@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model'
 import { PokeAPIService } from './poke-api.service';
+import { TypesRelationsService } from './types-relations.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InterpretPokepasteService {
 
-  constructor(private pokepasteAPI: PokeAPIService) {}
+  constructor(private readonly pokepasteAPI: PokeAPIService, private readonly typesRelations: TypesRelationsService) {}
 
   async interpretPokepaste(pokepaste: String): Promise<Pokemon[]> {
     const team: Pokemon[] = [];
@@ -47,10 +48,9 @@ export class InterpretPokepasteService {
         
       });
       team.push(pokemon); // add the pokemon to the team
-      console.log(pokemon);
     });
     
-    await this.setImagesOnTeam(team);
+    await this.setInfosOnPokemon(team);
     return team;
   }
  
@@ -220,13 +220,13 @@ export class InterpretPokepasteService {
     return lineOfThePaste.startsWith("-");
   }
 
-  async setImagesOnTeam(team: Pokemon[]): Promise<void> {
+  async setInfosOnPokemon(team: Pokemon[]): Promise<void> {
     for (const pokemon of team) {
-      try {
-        await this.pokepasteAPI.setInfosOnPokemon(pokemon);
-      } catch (error) {
-        console.error('Error while fetching image for', pokemon.name, error);
-      }
+        await this.pokepasteAPI.setInfosOnPokemon(pokemon).then(() => {
+          pokemon.typesRelations = this.typesRelations.calculateTypeMultipliers(pokemon.types);
+          console.log(pokemon);
+          
+        });        
     }
   }
   

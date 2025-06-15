@@ -28,8 +28,8 @@ export class PokemonCardComponent implements OnInit {
          
     }
 
-    openDetailedView(pokemon: Pokemon) {
-        this.sharePokemonService.changePokemon(pokemon)
+    openDetailedView() {
+        this.sharePokemonService.changePokemon(this.pokemon)
         this.sharePokemonService.changeMovesAndTypes(this.movesAndTypes)
         this.router.navigateByUrl('pokemon');
     }

@@ -1,28 +1,46 @@
-.team-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  padding: 50px;
+p {
+  margin: 0;
 }
-
- p {
-        margin: 0;
- }
 
 .card-container {
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 5px 5px 10px 5px;
+
+  cursor: pointer;
 
 
   .top {
     display: flex;
     flex-direction: row;
     width: 100%;
+    margin-bottom: 5px;
 
-    img {
+    .top-left {
+      
       width: 20%;
-      aspect-ratio: 1 / 1;
-      object-fit: contain;
+      display: flex;
+      flex-direction: column;
+
+      img.pokemon-image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: contain;
+      }
+      .type-images{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+
+        img{
+          width: 80%;
+        }
+      }
     }
 
     .top-right {
@@ -30,6 +48,7 @@
       width: 80%;
       display: flex;
       justify-content: center;
+      align-items: center;
       flex-direction: column;
 
       .onRow {
@@ -40,38 +59,74 @@
 
 
       .pokemon-name {
-        margin-top: 10px;
-        margin-bottom: 0;
+        margin-bottom: 10px;
         text-align: center;
       }
 
     }
   }
 
-  .pokemon-moves {
-
-    width: 50%;
-
-    .move-wrapper {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      height: 25px;
-
-      img {
-        height: 60%;
-      }
-
-      p {
-        margin-right: 5px;
-      }
-    }
+  .evs {
+    display: flex;
+    flex-direction: row;
+    margin-inline: auto;
+    margin-block: 5px;
   }
 
-  .body{
+  .body {
     margin-inline: 2%;
     width: 96%;
     display: flex;
     flex-direction: row;
+
+    .pokemon-moves {
+
+      width: 50%;
+
+      .move-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 25px;
+        margin-bottom: 10px;
+
+        img {
+          height: 60%;
+          margin-left: auto;
+          margin-right: 10px;
+        }
+
+        p {
+          font-size: 15px;
+          margin-right: 5px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 100%;
+        }
+      }
+    }
+
+
+    .pokemon-stats {
+      width: 50%;
+
+      .stat-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+
+        p {
+          width: 20%;
+        }
+
+        .progress {
+          width: 80%;
+          height: 15px;
+        }
+      }
+
+    }
   }
 }

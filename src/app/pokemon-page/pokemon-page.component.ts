@@ -23,6 +23,7 @@ export class PokemonPageComponent {
   async ngOnInit() {
     if (this.sharePokemonService.isPokemonShared()) {
       this.pokemon = this.sharePokemonService.getPokemon();
+
       this.movesAndTypes = this.sharePokemonService.getMovesAndTypes();
     } else {
       this.router.navigateByUrl('');
