@@ -25,7 +25,7 @@ export class PokemonCardComponent implements OnInit {
         this.pokemon.moves.forEach(async move => {
             this.movesAndTypes = await this.pokeAPIService.getMovesType(this.pokemon.moves);
         });
-
+         
     }
 
     openDetailedView(pokemon: Pokemon) {

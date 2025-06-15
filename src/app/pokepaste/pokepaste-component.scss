@@ -5,9 +5,11 @@
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 3%;
+    margin-inline: 1%;
 }
 
-app-pokemon
+.pokemon-card-container
 {
     width: 30%;
 }

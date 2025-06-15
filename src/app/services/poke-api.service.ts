@@ -12,13 +12,22 @@ export class PokeAPIService {
   constructor(private http: HttpClient) {}
 
 
-  setImgOnPokemon(pokemon: Pokemon): Promise<string> {
+  setInfosOnPokemon(pokemon: Pokemon): Promise<void> {
     return new Promise((resolve, reject) => {
       this.http.get('https://pokeapi.co/api/v2/pokemon/' + pokemon.name).subscribe(
         (response: any) => {
-          const imageUrl = response.sprites.front_default;
-          pokemon.imageUrl = imageUrl;
-          resolve(imageUrl);
+          pokemon.imageUrl = response.sprites.front_default;
+            pokemon.baseStats = {
+            HP: response.stats.find((s: any) => s.stat.name === 'hp')?.base_stat || 0,
+            Atk: response.stats.find((s: any) => s.stat.name === 'attack')?.base_stat || 0,
+            Def: response.stats.find((s: any) => s.stat.name === 'defense')?.base_stat || 0,
+            SpA: response.stats.find((s: any) => s.stat.name === 'special-attack')?.base_stat || 0,
+            SpD: response.stats.find((s: any) => s.stat.name === 'special-defense')?.base_stat || 0,
+            Spe: response.stats.find((s: any) => s.stat.name === 'speed')?.base_stat || 0
+            };
+            console.log(pokemon);
+            
+            resolve();
         },
         error => {
           reject('');

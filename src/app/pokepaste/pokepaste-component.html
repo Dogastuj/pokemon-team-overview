@@ -1,6 +1,8 @@
 <div class="teamContainer">
     
     @for (pokemon of team; track pokemon.name) {
-        <app-pokemon-card [pokemon]="pokemon"/>
+        <div class="pokemon-card-container">
+            <app-pokemon-card [pokemon]="pokemon"/>
+        </div>
     }
 </div>

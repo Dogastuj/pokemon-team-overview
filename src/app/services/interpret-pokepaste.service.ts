@@ -223,7 +223,7 @@ export class InterpretPokepasteService {
   async setImagesOnTeam(team: Pokemon[]): Promise<void> {
     for (const pokemon of team) {
       try {
-        await this.pokepasteAPI.setImgOnPokemon(pokemon);
+        await this.pokepasteAPI.setInfosOnPokemon(pokemon);
       } catch (error) {
         console.error('Error while fetching image for', pokemon.name, error);
       }

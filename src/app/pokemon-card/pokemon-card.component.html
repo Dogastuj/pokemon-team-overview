@@ -1,6 +1,4 @@
-<div class="team-container">
-
-    <div (click)="openDetailedView(pokemon)" class="card mb-3" style="max-width: 540px;">
+<!-- <div (click)="openDetailedView(pokemon)" class="card mb-3" style="max-width: 540px;">
         <div class="row g-0">
             <div class="col-md-4">
                 <img [src]="pokemon.imageUrl">
@@ -23,7 +21,38 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
+<div class="card-container">
+    <span class="top">
+        <img [src]="pokemon.imageUrl">
+        <div class="top-right">
+            <h5 class="pokemon-name"><strong>{{ pokemon.name }}</strong></h5>
+            <p class="nature"><strong>Nature:</strong> {{ pokemon.nature }}</p>
+            <p class="card-text"><strong>Ability:</strong> {{ pokemon.ability }}</p>
+            <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+        </div>
+    </span>
+    <span class="body">
+
+        <div class="pokemon-moves">
+            <h5>Moves :</h5>
+            <div *ngFor="let move of pokemon.moves" class="move-wrapper">
+                <p>{{ move }}</p>
+                <img class="moveImage" [src]="'assets/moves/' + movesAndTypes[move] + '.png'" alt="image of the type" />
+            </div>
+        </div>
+
+         <div class="pokemon-stats">
+            <h5>Stats :</h5>
+            
+            <div *ngFor="let move of pokemon.moves" class="stat-wrapper">
+                <!--TODO affichage des stats-->
+                <p>Stat</p>
+            </div>
+        </div>
+        
+
+    </span>
 
 </div>
