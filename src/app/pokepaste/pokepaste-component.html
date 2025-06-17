@@ -15,16 +15,20 @@
             <table>
                 <thead>
                     <tr>
-                        <ng-container><th>Pokemon</th></ng-container>
+                        <ng-container>
+                            <th>Pokemon</th>
+                        </ng-container>
                         <ng-container *ngFor="let relation of team[0].typesRelations | keyvalue">
                             <th>{{ relation.key }}</th>
                         </ng-container>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let p of team">
-                        <ng-container><td>{{p.name}}</td></ng-container>
+                        <ng-container>
+                            <td>{{p.name}}</td>
+                        </ng-container>
                         <ng-container *ngFor="let relation of p.typesRelations | keyvalue">
                             <td>
                                 <div *ngIf="relation.value === 4" class="x4">x4</div>
@@ -36,6 +40,26 @@
 
                             </td>
                         </ng-container>
+                    </tr>
+
+                    <tr>
+                        <ng-container>
+                            <td>Total</td>
+                        </ng-container>
+                        <ng-container *ngFor="let relation of team[0].typesRelations | keyvalue; let i = index">
+                            <td>
+                                <div class="average" [ngStyle]="{
+                                                'background': 'rgb(' + 
+                                                (255 * ((averageRelations.get(relation.key) || 0.6) - 0.6) / (2 - 0.6)) + ',' + 
+                                                (255 * (1 - ((averageRelations.get(relation.key) || 0.6) - 0.6) / (2 - 0.6))) + ',0)',
+                                                'color': '#fff',
+                                                'padding': '2px 6px',
+                                                'border-radius': '4px'
+                                            }">
+                                </div>
+                            </td>
+                        </ng-container>
+                    </tr>
             </table>
         </span>
     </div>
@@ -43,5 +67,5 @@
 
 <button class="copy-pokepaste" (click)="copyPokepaste()">Copy pokepaste</button>
 } @else {
-    <p>Chargement en cours...</p>
+<p>Chargement en cours...</p>
 }

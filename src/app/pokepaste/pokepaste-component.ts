@@ -18,6 +18,8 @@ export class PokepasteComponent implements OnInit {
   pokepaste!: string;
   team!: Pokemon[];
 
+  averageRelations: Map<string, number> = new Map<string, number>();
+
   constructor(
     private sharePokpasteService: SharePokepasteService,
     private interpretPokepasteService: InterpretPokepasteService,
@@ -38,6 +40,8 @@ export class PokepasteComponent implements OnInit {
       });
       this.saveTeamsService.saveTeam(this.pokepaste, imagesTable);
 
+      this.setAverageRelations();
+
     } else {
       this.router.navigateByUrl('');
     }
@@ -49,5 +53,38 @@ export class PokepasteComponent implements OnInit {
     navigator.clipboard.writeText(this.pokepaste);
   }
 
+  setAverageRelations() {
+    
+    const relationSums: Map<string, number> = new Map();
+    const relationCounts: Map<string, number> = new Map();
+
+    this.team.forEach(pokemon => {
+      if (pokemon.typesRelations && typeof pokemon.typesRelations === 'object') {
+        let entries: [string, number | string][] = [];
+        if (pokemon.typesRelations instanceof Map) {
+          entries = Array.from(pokemon.typesRelations.entries());
+        } else {
+          entries = Object.entries(pokemon.typesRelations);
+        }
+        entries.forEach(([type, value]) => {
+
+          const numValue = typeof value === 'number' ? value : Number(value);
+          if (!isNaN(numValue)) {
+            relationSums.set(type, (relationSums.get(type) || 0) + numValue);
+            relationCounts.set(type, (relationCounts.get(type) || 0) + 1);
+          }
+        });
+      }
+    });
+
+    this.averageRelations.clear();
+    relationSums.forEach((sum, type) => {
+      const count = relationCounts.get(type) || 1;
+      this.averageRelations.set(type, sum / count);
+    });
+  }
+
 
 }
+
+

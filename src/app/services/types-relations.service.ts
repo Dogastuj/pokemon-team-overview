@@ -106,14 +106,10 @@ export class TypesRelationsService {
             for (const defenderType of defenderTypes) {
                 const chart = this.typeChart[attackingType];
                 const typeEffect = chart[defenderType] ?? 1;
-                console.log(`${attackingType} vs ${defenderType} = ${typeEffect}`);
                 multiplier *= typeEffect;
             }
             multipliers.set(attackingType, multiplier);
         }
-        console.log(defenderTypes);
-        console.log(multipliers);
-
         return multipliers;
     }
 
