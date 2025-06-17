@@ -1,10 +1,42 @@
 <div class="teamContainer">
-    
+
     @for (pokemon of team; track pokemon.name) {
-        <div class="pokemon-card-container">
-            <app-pokemon-card [pokemon]="pokemon"/>
-        </div>
+    <div class="pokemon-card-container">
+        <app-pokemon-card [pokemon]="pokemon" />
+    </div>
     }
 </div>
 
+<div class="teamTypes">
+    <div class="types-relations">
+        <h3>Team's Type Relations</h3>
+        <span class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container><th>Pokemon</th></ng-container>
+                        <ng-container *ngFor="let relation of team[0].typesRelations | keyvalue">
+                            <th>{{ relation.key }}</th>
+                        </ng-container>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of team">
+                        <ng-container><td>{{p.name}}</td></ng-container>
+                        <ng-container *ngFor="let relation of p.typesRelations | keyvalue">
+                            <td>
+                                <div *ngIf="relation.value === 4" class="x4">x4</div>
+                                <div *ngIf="relation.value === 2" class="x2">x2</div>
+                                <div *ngIf="relation.value === 1" class="x1">x1</div>
+                                <div *ngIf="relation.value === 0.5" class="x05">x0.5</div>
+                                <div *ngIf="relation.value === 0.25" class="x025">x0.25</div>
+                                <div *ngIf="relation.value === 0" class="x0">x0</div>
+
+                            </td>
+                        </ng-container>
+            </table>
+        </span>
+    </div>
+</div>
 <button class="copy-pokepaste" (click)="copyPokepaste()">Copy pokepaste</button>

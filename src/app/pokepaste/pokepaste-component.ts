@@ -5,11 +5,12 @@ import { Pokemon } from '../models/pokemon.model';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { Router } from '@angular/router';
 import { SaveTeamsService } from '../services/save-teams.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-pokepaste',
   standalone: true,
-  imports: [PokemonCardComponent],
+  imports: [PokemonCardComponent, CommonModule],
   templateUrl: './pokepaste-component.html',
   styleUrls: ['./pokepaste-component.scss']
 })
