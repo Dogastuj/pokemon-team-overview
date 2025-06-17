@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../models/pokemon.model';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,9 +47,30 @@ export class PokeAPIService {
     }
    }
 
-   getMoveInfo(moveName: string): Observable<any> {    
-      return this.http.get('https://pokeapi.co/api/v2/move/' + moveName);
-  }
+   getMoveInfo(moveName: string): Observable<any> {
+  // Vérifie si le nom suit le format "hidden-power-[type]"
+  const hiddenPowerMatch = moveName.match(/^hidden-power-\[([a-z]+)\]$/i);
+  const apiName = hiddenPowerMatch ? 'hidden-power' : moveName.replace(/\s+/g, '-').toLowerCase();
+
+  return this.http.get('https://pokeapi.co/api/v2/move/' + apiName).pipe(
+    map((response: any) => {
+      if (hiddenPowerMatch) {
+        const forcedType = hiddenPowerMatch[1].toLowerCase();
+        return {
+          ...response,
+          type: {
+            ...response.type,
+            name: forcedType
+          },
+          is_hidden_power: true // optionnel, utile pour debug ou logique annexe
+        };
+      }
+      return response;
+    })
+  );
+}
+
+
 
   getMovesType(moves: string[]): Record<string, string>{
 
