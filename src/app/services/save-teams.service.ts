@@ -31,7 +31,6 @@ export class SaveTeamsService {
 
   getAllTeamsPreviews(): string[][] {
     const nbTeamsStr = localStorage.getItem('nbTeams');
-    console.log("found " + nbTeamsStr + " teams in local storage");
     if (nbTeamsStr === null) {
       this.router.navigateByUrl('');
       return [];
@@ -42,8 +41,6 @@ export class SaveTeamsService {
 
     for (let i = 1; i <= nbTeams; i++) {
       const imgStr = localStorage.getItem('img_team' + i);
-      console.log("img :");
-      console.log(imgStr);
       if (imgStr) {
         const imgArray: string[] = JSON.parse(imgStr);
         teams.push(imgArray);

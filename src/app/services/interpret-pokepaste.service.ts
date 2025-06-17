@@ -224,8 +224,7 @@ export class InterpretPokepasteService {
     for (const pokemon of team) {
         await this.pokepasteAPI.setInfosOnPokemon(pokemon).then(() => {
           pokemon.typesRelations = this.typesRelations.calculateTypeMultipliers(pokemon.types);
-          console.log(pokemon);
-          
+       
         });        
     }
   }

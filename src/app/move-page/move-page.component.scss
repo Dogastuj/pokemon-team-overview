@@ -1,17 +1,132 @@
-.damage-class-wrapper{
+.body {
+    width: 55%;
+    margin: auto;
+    background-color: #f9f9f9;
+    padding: 2%;
+    height: 80vh;
+    text-align: center;
+}
+
+
+.top{
+    width: fit-content;
+    margin-inline: auto;
+    text-transform: capitalize;
+    margin-bottom: 5%;
+}
+
+.move-name {
+    text-align: center;
+    font-size: 40px;
+    padding: 5px;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.type{
+}
+
+.atk-type-container{
+    height: 10%;
+    width: fit-content;
+    margin-inline: auto;
+    text-transform: capitalize;
+
+    h3{
+        margin-right: 15px;
+    }
+}
+
+.atkType {
+    height: 50%;
+}
+
+img{
+    object-fit: contain;
+}
+
+.type-wrapper {
     display: flex;
     flex-direction: row;
 
-    img{
+    img {
         width: 100px;
     }
 }
 
-.type-wrapper{
-    display: flex;
-    flex-direction: row;
+.description{
+    width: 80%;
+    margin-inline: auto;
+    font-size: 18px;
+}
 
-    img{
-        width: 100px;
+
+.table {
+    display: flex;
+    justify-content: center;
+
+    table {
+        width: 95%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 1rem;
+        background-color: #fff;
+
+        tr {
+            border: none;
+            border-bottom: 1px solid #f2f2f2;
+
+        }
+
+        th,
+        td {
+            width: 5%;
+            margin-inline: 2px;
+            text-align: left;
+            text-align: center;
+            border: none;
+            border-inline: 1px solid #f2f2f2;
+        }
+
+        .x4 {
+            background-color: #fea2a2;
+            color: #a10000;
+        }
+
+        .x2 {
+            background-color: #ffc5b3;
+            color: #a15c00;
+        }
+
+        .x05 {
+            background-color: #c9f9c9;
+            color: #098d09;
+        }
+
+        .x025 {
+            background-color: #96fd96;
+            color: #066d06;
+        }
+
+        .x0 {
+            background-color: #e0e0e0;
+            color: #666;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
     }
 }

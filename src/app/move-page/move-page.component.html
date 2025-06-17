@@ -1,15 +1,53 @@
-<h2>{{moveInfo.name}}</h2>
+@if(moveInfo){
+<div class="body">
+    <div class="top">
+        <h2 class="move-name">{{moveInfo.name}}</h2>
+        <img class="type" [src]="'assets/moves/' + moveInfo.type.name + '.png'" alt="move damage class">
+    </div>
 
-<h3>Power : {{moveInfo.power}}</h3>
+    <h3>Power : {{moveInfo.power || '--'}}</h3>
 
-<h3>Accuracy : {{moveInfo.accuracy}}</h3>
+    <h3>Accuracy : {{moveInfo.accuracy || '--'}}</h3>
 
-<div class="damage-class-wrapper">
-    <h3>{{moveInfo.damage_class.name}}</h3>
-    <img [src]="'assets/moves/damage-class/' + moveInfo.damage_class.name + '.png'" alt="move damage class">
+    <div class="wrapper atk-type-container">
+        <h3>Attack type : {{moveInfo.damage_class.name}}</h3>
+        <img class="atkType" [src]="'assets/moves/damage-class/' + moveInfo.damage_class.name + '.png'"
+            alt="move damage class">
+    </div>
+
+    <p class="description">{{moveInfo.effect_entries[0].effect}}</p>
+
+    @if(moveInfo.damage_class.name !== 'status' && typeMultipliers){
+    <div class="types-relations">
+        <h3>Type Relations</h3>
+        <span class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <ng-container *ngFor="let relation of typeMultipliers | keyvalue">
+                            <th>{{ relation.key }}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <ng-container *ngFor="let relation of typeMultipliers | keyvalue">
+                            <td>
+                                <div *ngIf="relation.value === 4" class="x4">x4</div>
+                                <div *ngIf="relation.value === 2" class="x2">x2</div>
+                                <div *ngIf="relation.value === 1" class="x1">x1</div>
+                                <div *ngIf="relation.value === 0.5" class="x05">x0.5</div>
+                                <div *ngIf="relation.value === 0.25" class="x025">x0.25</div>
+                                <div *ngIf="relation.value === 0" class="x0">x0</div>
+                            </td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
+    </div>
+    }
+
+
 </div>
-
-<div class="type-wrapper">
-    <h3>{{moveInfo.type.name}}</h3>
-    <img [src]="'assets/moves/' + moveInfo.type.name + '.png'" alt="move damage class">
-</div>
+}

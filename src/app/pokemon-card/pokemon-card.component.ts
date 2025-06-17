@@ -33,4 +33,9 @@ export class PokemonCardComponent implements OnInit {
         this.sharePokemonService.changeMovesAndTypes(this.movesAndTypes)
         this.router.navigateByUrl('pokemon');
     }
+
+    openMoveDetails(moveName: string) {
+    const moveUrlName = moveName.toLowerCase().replace(/\s+/g, '-');
+    this.router.navigateByUrl('/move/' + moveUrlName);
+  }
 }

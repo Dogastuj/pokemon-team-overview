@@ -28,17 +28,20 @@ export class PokepasteComponent implements OnInit {
     if (this.sharePokpasteService.isPokepasteShared()) {
       this.pokepaste = this.sharePokpasteService.getPaste();
       this.team = await this.interpretPokepasteService.interpretPokepaste(this.pokepaste);
+
+      const imagesTable: string[] = [];
+      this.team.forEach(p => {
+        if (p.imageUrl) {
+          imagesTable.push(p.imageUrl!);
+        }
+      });
+      this.saveTeamsService.saveTeam(this.pokepaste, imagesTable);
+
     } else {
       this.router.navigateByUrl('');
     }
 
-    const imagesTable: string[] = [];
-    this.team.forEach(p => {
-      if (p.imageUrl) {
-        imagesTable.push(p.imageUrl!);
-      }
-    });
-    this.saveTeamsService.saveTeam(this.pokepaste, imagesTable);
+
   }
 
   copyPokepaste() {

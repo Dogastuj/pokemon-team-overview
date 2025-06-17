@@ -47,9 +47,7 @@ export class PokeAPIService {
     }
    }
 
-   getMoveInfo(moveName: string): Observable<any> {
-    console.log('https://pokeapi.co/api/v2/move/' + moveName);
-    
+   getMoveInfo(moveName: string): Observable<any> {    
       return this.http.get('https://pokeapi.co/api/v2/move/' + moveName);
   }
 

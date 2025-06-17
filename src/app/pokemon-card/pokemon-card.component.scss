@@ -20,7 +20,7 @@ p {
     margin-bottom: 5px;
 
     .top-left {
-      
+
       width: 20%;
       display: flex;
       flex-direction: column;
@@ -30,14 +30,15 @@ p {
         aspect-ratio: 1 / 1;
         object-fit: contain;
       }
-      .type-images{
+
+      .type-images {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 2px;
 
-        img{
+        img {
           width: 80%;
         }
       }
@@ -84,6 +85,7 @@ p {
       width: 50%;
 
       .move-wrapper {
+        background-color: #f4f4f4;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -104,6 +106,11 @@ p {
           text-overflow: ellipsis;
           max-width: 100%;
         }
+      }
+
+      .move-wrapper:hover {
+        background-color: #fcfcfc;
+        cursor: pointer;
       }
     }
 

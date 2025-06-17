@@ -112,4 +112,16 @@ export class TypesRelationsService {
         return multipliers;
     }
 
+    calculateAttackMultipliers(attackingType: Type): Map<Type, number> {
+    const multipliers = new Map<Type, number>();
+    const defenderTypes = Object.keys(this.typeChart[attackingType]) as Type[];
+
+    for (const defenderType of defenderTypes) {
+        const multiplier = this.typeChart[attackingType][defenderType] ?? 1;
+        multipliers.set(defenderType, multiplier);
+    }
+
+    return multipliers;
+}
+
 }
