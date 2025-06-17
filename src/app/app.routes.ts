@@ -1,9 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomepageComponent } from './homepage/homepage.component';
-import { PokepasteComponent } from './pokepaste/pokepaste-component';
-import { MyTeamsComponent } from './my-teams/my-teams.component';
-import { PokemonPageComponent } from './pokemon-page/pokemon-page.component';
-import { MovePageComponent } from './move-page/move-page.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { MovePageComponent } from './pages/move-page/move-page.component';
+import { MyTeamsComponent } from './pages/my-teams/my-teams.component';
+import { PokepasteComponent } from './pages/pokepaste/pokepaste-component';
+import { PokemonPageComponent } from './pages/pokemon-page/pokemon-page.component';
+
 
 export const routes: Routes = [
     {path: '', component: HomepageComponent},

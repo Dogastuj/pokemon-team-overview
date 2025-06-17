@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PokeAPIService } from '../services/poke-api.service';
+
 import { take } from 'rxjs/operators';
-import { TypesRelationsService } from '../services/types-relations.service';
-import { Type } from '../models/types.model';
+
 import { CommonModule } from '@angular/common';
+import { PokeAPIService } from '../../services/poke-api.service';
+import { TypesRelationsService } from '../../services/types-relations.service';
+import { Type } from '../../models/types.model';
 
 @Component({
   selector: 'app-move-page',

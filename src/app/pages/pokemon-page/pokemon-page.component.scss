@@ -1,3 +1,84 @@
+@use 'variables' as *;
+
+::ng-deep body {
+
+    background-color: $header-bg-color-light;
+
+    * {
+        color: $font-color-light;
+    }
+
+    .stats-container {
+        background-color: $bg-secondary-light;
+    }
+
+    .move-wrapper {
+        background-color: #f4f4f4;
+    }
+
+    .move-wrapper:hover {
+        background-color: #fcfcfc;
+    }
+
+    table {
+        background-color: $bg-secondary-light;
+
+        tr {
+            border-bottom: 1px solid $bg-tertiary-light;
+        }
+
+        td {
+            border-inline: 1px solid $bg-tertiary-light;
+        }
+    }
+
+    th {
+        background-color: $bg-secondary-light
+    }
+
+
+    &.dark {
+        background-color: $header-bg-color-dark;
+
+        * {
+            color: $font-color-dark;
+        }
+
+        .stats-container {
+            background-color: $bg-secondary-dark;
+        }
+
+        .move-wrapper {
+            background-color: $bg-tertiary-dark;
+
+        }
+
+        .move-wrapper:hover {
+            background-color: #797979;
+        }
+
+        table {
+            background-color: $bg-secondary-dark;
+
+            tr {
+                border-bottom: 1px solid $bg-secondary-dark;
+            }
+
+            td {
+                border-inline: 1px solid $bg-tertiary-dark;
+                background-color: $bg-secondary-dark;
+            }
+
+
+        }
+
+        th {
+            background-color: $bg-secondary-dark;
+        }
+
+    }
+}
+
 .body {
     padding-inline: 5%;
 
@@ -52,7 +133,6 @@
             width: 50%;
             margin-left: auto;
             margin-right: 5%;
-            background-color: #f9f9f9;
             padding: 10px;
             border-radius: 8px;
         }
@@ -70,7 +150,7 @@
             gap: 5%;
         }
 
-        .evs{
+        .evs {
             padding-block: 10px;
         }
 
@@ -79,7 +159,6 @@
                 margin-block: 5px;
                 padding-inline: 5px;
                 border-radius: 5px;
-                background-color: #f6f6f6;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -101,8 +180,8 @@
                     max-width: 100%;
                 }
             }
+
             .move-wrapper:hover {
-                background-color: #fcfcfc;
                 cursor: pointer;
             }
         }
@@ -136,11 +215,9 @@
         border-collapse: collapse;
         margin: 20px 0;
         font-size: 1rem;
-        background-color: #fff;
 
         tr {
             border: none;
-            border-bottom: 1px solid #f2f2f2;
         }
 
         th,
@@ -150,7 +227,6 @@
             text-align: left;
             text-align: center;
             border: none;
-            border-inline: 1px solid #f2f2f2;
         }
 
         .x4 {
@@ -179,9 +255,9 @@
         }
 
         th {
-            background-color: #f2f2f2;
             font-weight: 600;
         }
+
         tr:last-child td {
             border-bottom: none;
         }

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { SaveTeamsService } from '../services/save-teams.service';
+
 import { CommonModule } from '@angular/common';
-import { TeamPreviewComponent } from '../team-preview/team-preview.component';
+import { SaveTeamsService } from '../../services/save-teams.service';
+import { TeamPreviewComponent } from '../../team-preview/team-preview.component';
+
 
 @Component({
   selector: 'app-my-teams',

@@ -1,3 +1,45 @@
+@use 'variables' as *;
+
+::ng-deep body {
+
+
+  * {
+    color: $font-color-light;
+  }
+
+  * .card-container {
+    background-color: $bg-secondary-light;
+  }
+
+  .move-wrapper {
+    background-color: #f4f4f4;
+  }
+
+  .move-wrapper:hover {
+    background-color: #fcfcfc;
+  }
+
+  &.dark {
+
+    * {
+      color: $font-color-dark;
+    }
+
+    .card-container {
+      background-color: $bg-secondary-dark;
+    }
+
+    .move-wrapper {
+      background-color: $bg-tertiary-dark;
+
+    }
+
+    .move-wrapper:hover {
+      background-color: #797979;
+    }
+  }
+}
+
 p {
   margin: 0;
 }
@@ -5,8 +47,6 @@ p {
 .card-container {
   display: flex;
   flex-direction: column;
-
-  background-color: #f9f9f9;
   border-radius: 8px;
   padding: 5px 5px 10px 5px;
 
@@ -85,17 +125,20 @@ p {
       width: 50%;
 
       .move-wrapper {
-        background-color: #f4f4f4;
         display: flex;
         flex-direction: row;
         align-items: center;
         height: 25px;
         margin-bottom: 10px;
+        padding-inline: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+
 
         img {
           height: 60%;
           margin-left: auto;
-          margin-right: 10px;
+          margin-right: 5px;
         }
 
         p {
@@ -109,7 +152,6 @@ p {
       }
 
       .move-wrapper:hover {
-        background-color: #fcfcfc;
         cursor: pointer;
       }
     }

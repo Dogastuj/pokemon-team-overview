@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { SharePokepasteService } from '../services/share-pokepaste.service';
-import { InterpretPokepasteService } from '../services/interpret-pokepaste.service';
-import { Pokemon } from '../models/pokemon.model';
-import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
+
 import { Router } from '@angular/router';
-import { SaveTeamsService } from '../services/save-teams.service';
+
 import { CommonModule } from '@angular/common';
+import { Pokemon } from '../../models/pokemon.model';
+import { PokemonCardComponent } from '../../pokemon-card/pokemon-card.component';
+import { InterpretPokepasteService } from '../../services/interpret-pokepaste.service';
+import { SaveTeamsService } from '../../services/save-teams.service';
+import { SharePokepasteService } from '../../services/share-pokepaste.service';
 
 @Component({
   selector: 'app-pokepaste',

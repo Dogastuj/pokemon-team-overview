@@ -1,0 +1,57 @@
+@use 'variables' as *;
+
+::ng-deep body {
+
+    * {
+        color: $font-color-light;
+    }
+
+    .container {
+        background-color: $bg-color-light;
+    }
+
+    textarea, button {
+        background-color: $bg-secondary-light;
+    }
+
+    &.dark {
+
+        * {
+            color: $font-color-dark;
+        }
+
+        .container {
+            background-color: $bg-color-dark;
+        }
+
+        textarea, button {
+            background-color: $bg-secondary-dark;
+        }
+    }
+
+}
+
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+textarea {
+    flex: 0.3;
+}
+
+button {
+    height: 45px;
+    width: 130px;
+    border-radius: 5px;
+    margin: 5px;
+}

@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
-import { SharePokepasteService } from '../services/share-pokepaste.service'; 
+
 import { Router, RouterLink } from '@angular/router';
+import { SharePokepasteService } from '../../services/share-pokepaste.service';
 
 
 @Component({

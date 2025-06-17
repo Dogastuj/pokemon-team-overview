@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { SharePokemonService } from '../services/share-pokemon.service';
 import { Router } from '@angular/router';
-import { Pokemon } from '../models/pokemon.model';
 import { CommonModule } from '@angular/common';
+import { Pokemon } from '../../models/pokemon.model';
+import { SharePokemonService } from '../../services/share-pokemon.service';
 
 @Component({
   selector: 'app-pokemon-page',

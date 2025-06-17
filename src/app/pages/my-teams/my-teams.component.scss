@@ -1,0 +1,38 @@
+@use 'variables' as *;
+
+::ng-deep body {
+
+  header {
+    background-color: $header-bg-color-light;
+
+    * {
+      color: $font-color-light;
+    }
+
+    .container {
+      background-color: $header-bg-color-light;
+    }
+
+  }
+
+  &.dark {
+    header {
+      background-color: $header-bg-color-dark;
+
+      * {
+        color: $font-color-dark;
+      }
+
+      .container {
+        background-color: $header-bg-color-light;
+      }
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}

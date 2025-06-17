@@ -1,1 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
+@use 'variables' as *;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+app-root {
+  display: block;
+  height: 100%;
+}
+
+
+body {
+  background-color: $bg-color-light;
+
+  &.dark {
+    background-color: $bg-color-dark;
+  }
+}

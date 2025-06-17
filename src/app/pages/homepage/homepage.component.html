@@ -1,0 +1,7 @@
+<div>
+    <div class="container">
+        <textarea id="pokemonInput" placeholder="Put your pokepaste here" (input)="autoResize(inputField)"
+            #inputField></textarea>
+        <button (click)="sendInput(inputField.value)">Load pokepaste</button>
+    </div>
+</div>

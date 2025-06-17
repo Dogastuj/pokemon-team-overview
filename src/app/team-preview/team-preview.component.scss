@@ -1,38 +1,76 @@
-.team {
-    width: 220px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f5f5f5;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+@use 'variables' as *;
+
+::ng-deep body {
+
+
+  * {
+    color: $font-color-light;
   }
 
-.team:hover{
+  .team {
+    background-color: $bg-secondary-light;
+  }
+  button{
+    background-color: $bg-secondary-light;
+      border: 1px solid $bg-tertiary-light;
+    }
+
+  &.dark {
+
+
+    * {
+      color: $font-color-dark;
+    }
+
+    .team {
+      background-color: $bg-secondary-dark;
+    }
+    button{
+      background-color: $bg-secondary-dark;
+      border: 1px solid $bg-tertiary-dark;
+    }
+  }
+
+}
+
+
+
+
+
+.team {
+  width: 220px;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.team:hover {
   cursor: pointer;
 }
-  
-  .team-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .team-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
-  .team-img {
-    width: 30%;
-    margin: 5px;
-    border-radius: 5px;
-    object-fit: cover;
-  }
 
-  .button{
-    font-size: 10px;
-  }
-  
+.team-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.team-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.team-img {
+  width: 30%;
+  margin: 5px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.button {
+  font-size: 10px;
+  border-radius: 5px;
+}

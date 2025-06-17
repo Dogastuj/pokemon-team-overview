@@ -1,14 +1,78 @@
+@use 'variables' as *;
+
+::ng-deep body {
+
+    background-color: $header-bg-color-light;
+
+    * {
+        color: $font-color-light;
+    }
+
+    .body {
+        background-color: $bg-secondary-light;
+    }
+
+    table {
+        background-color: $bg-tertiary-light;
+
+        tr {
+            border-bottom: 1px solid $bg-tertiary-light;
+        }
+
+        td {
+            border-inline: 1px solid $bg-tertiary-light;
+        }
+    }
+
+    th {
+        background-color: $bg-tertiary-light
+    }
+
+
+    &.dark {
+        background-color: $header-bg-color-dark;
+
+        * {
+            color: $font-color-dark;
+        }
+
+        .body {
+            background-color: $bg-secondary-dark;
+        }
+
+
+        table {
+            background-color: $bg-tertiary-dark;
+
+            tr {
+                border-bottom: 1px solid $bg-tertiary-dark;
+            }
+
+            td {
+                border-inline: 1px solid $bg-tertiary-dark;
+                background-color: $bg-tertiary-dark;
+            }
+
+
+        }
+
+        th {
+            background-color: $bg-tertiary-dark;
+        }
+    }
+
+}
+
 .body {
     width: 55%;
     margin: auto;
-    background-color: #f9f9f9;
     padding: 2%;
     height: 80vh;
     text-align: center;
 }
 
 
-.top{
+.top {
     width: fit-content;
     margin-inline: auto;
     text-transform: capitalize;
@@ -26,16 +90,14 @@
     flex-direction: row;
 }
 
-.type{
-}
 
-.atk-type-container{
+.atk-type-container {
     height: 10%;
     width: fit-content;
     margin-inline: auto;
     text-transform: capitalize;
 
-    h3{
+    h3 {
         margin-right: 15px;
     }
 }
@@ -44,7 +106,7 @@
     height: 50%;
 }
 
-img{
+img {
     object-fit: contain;
 }
 
@@ -57,7 +119,7 @@ img{
     }
 }
 
-.description{
+.description {
     width: 80%;
     margin-inline: auto;
     font-size: 18px;
@@ -75,11 +137,9 @@ img{
         border-collapse: collapse;
         margin: 20px 0;
         font-size: 1rem;
-        background-color: #fff;
 
         tr {
             border: none;
-            border-bottom: 1px solid #f2f2f2;
 
         }
 
@@ -90,7 +150,6 @@ img{
             text-align: left;
             text-align: center;
             border: none;
-            border-inline: 1px solid #f2f2f2;
         }
 
         .x4 {
@@ -119,9 +178,9 @@ img{
         }
 
         th {
-            background-color: #f2f2f2;
             font-weight: 600;
         }
+
         tr:last-child td {
             border-bottom: none;
         }

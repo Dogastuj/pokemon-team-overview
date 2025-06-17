@@ -1,8 +1,11 @@
 <header>
     <h1>Pokemon Team Overview</h1>
+    <span class="wrapper">
+        <nav>
+            <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Homepage</a>
+            <a routerLink="/my-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">My teams</a>
+        </nav>
 
-    <nav>
-        <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Homepage</a>
-        <a routerLink="/my-teams" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">My teams</a>
-    </nav>
+        <button (click)="toggleTheme()" >Toogle theme</button>
+    </span>
 </header>
