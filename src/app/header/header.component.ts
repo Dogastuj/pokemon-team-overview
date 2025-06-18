@@ -13,16 +13,35 @@ export class HeaderComponent {
 
   darkThemeEnabled: boolean = false;
 
+  ngAfterViewInit(){
+    if(localStorage.getItem('dark-theme') && localStorage.getItem('dark-theme') === 'true'){
+      this.enableDarkTheme();      
+    }
+  }
+
   toggleTheme() {
     if(this.darkThemeEnabled){
+      
       if(!document.body.classList.contains('dark')){
         document.body.classList.add('dark');
+        localStorage.setItem('dark-theme', 'true');
+        
       }
     } else {
       if(document.body.classList.contains('dark')){
         document.body.classList.remove('dark');
+        localStorage.setItem('dark-theme', 'false');
+        
       }
     }
     this.darkThemeEnabled = !this.darkThemeEnabled;
+  }
+
+  enableDarkTheme(){
+    if(!document.body.classList.contains('dark')){
+        document.body.classList.add('dark');
+        localStorage.setItem('dark-theme', 'true');
+      }
+      this.darkThemeEnabled = true;
   }
 }
