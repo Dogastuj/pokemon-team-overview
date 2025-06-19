@@ -179,3 +179,13 @@ p {
     }
   }
 }
+
+.item-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}

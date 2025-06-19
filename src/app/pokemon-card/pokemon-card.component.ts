@@ -14,6 +14,7 @@ import { SharePokemonService } from '../services/share-pokemon.service';
 })
 export class PokemonCardComponent implements OnInit {
 
+
     @Input() pokemon!: Pokemon;
 
     movesAndTypes!: Record<string, string>;
@@ -38,4 +39,8 @@ export class PokemonCardComponent implements OnInit {
     const moveUrlName = moveName.toLowerCase().replace(/\s+/g, '-');
     this.router.navigateByUrl('/move/' + moveUrlName);
   }
+
+formatItemName(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '-');
+}
 }
