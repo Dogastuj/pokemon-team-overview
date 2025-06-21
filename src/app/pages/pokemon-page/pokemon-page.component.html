@@ -19,7 +19,10 @@
             <span class="infos">
                 <p class="nature"><strong>Nature:</strong> {{ pokemon.nature }}</p>
                 <p class="card-text"><strong>Ability:</strong> {{ pokemon.ability }}</p>
-                <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+                <span class="item-wrapper">
+                    <p class="card-text"><strong>Held Item:</strong> {{ pokemon.heldItem || 'None' }}</p>
+                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/{{formatItemName(pokemon.heldItem)}}.png" alt="item image">
+                </span>
             </span>
             <p class="evs"> Evs : {{pokemon.getEVsHTMLText()}}</p>
 

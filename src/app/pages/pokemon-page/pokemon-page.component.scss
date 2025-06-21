@@ -142,6 +142,17 @@
 
         width: 60%;
 
+        .item-wrapper {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
         .infos {
             width: 100%;
             padding-block: 10px;

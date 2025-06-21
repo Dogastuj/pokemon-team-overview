@@ -19,14 +19,14 @@ export class PokemonCardComponent implements OnInit {
 
     movesAndTypes!: Record<string, string>;
 
-    constructor(private pokeAPIService: PokeAPIService, private sharePokemonService : SharePokemonService, private router: Router) {}
+    constructor(private pokeAPIService: PokeAPIService, private sharePokemonService: SharePokemonService, private router: Router) { }
 
 
     ngOnInit(): void {
         this.pokemon.moves.forEach(async move => {
             this.movesAndTypes = this.pokeAPIService.getMovesType(this.pokemon.moves);
         });
-         
+
     }
 
     openDetailedView() {
@@ -36,11 +36,11 @@ export class PokemonCardComponent implements OnInit {
     }
 
     openMoveDetails(moveName: string) {
-    const moveUrlName = moveName.toLowerCase().replace(/\s+/g, '-');
-    this.router.navigateByUrl('/move/' + moveUrlName);
-  }
+        const moveUrlName = moveName.toLowerCase().replace(/\s+/g, '-');
+        this.router.navigateByUrl('/move/' + moveUrlName);
+    }
 
-formatItemName(name: string): string {
-    return name.toLowerCase().replace(/\s+/g, '-');
-}
+    formatItemName(name: string): string {
+        return name.toLowerCase().replace(/\s+/g, '-');
+    }
 }

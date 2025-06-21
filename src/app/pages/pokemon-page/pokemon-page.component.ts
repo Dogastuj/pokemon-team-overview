@@ -35,5 +35,9 @@ export class PokemonPageComponent {
     this.router.navigateByUrl('/move/' + moveUrlName);
   }
 
+  formatItemName(name: string): string {
+    return name.toLowerCase().replace(/\s+/g, '-');
+}
+
 
 }

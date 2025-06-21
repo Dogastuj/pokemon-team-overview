@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ng build --output-path=docs --base-href=/pokemon-team-overview/
+ng build --output-path=docs --base-href=pokemon-team-overview/
 
 if [ -d "docs/browser" ]; then
   echo "Déplacement du contenu de docs/browser/ vers docs/"
