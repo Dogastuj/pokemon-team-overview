@@ -58,6 +58,11 @@
             td {
                 border-inline: 1px solid $bg-tertiary-dark;
                 background-color: $bg-secondary-dark;
+
+                .x1{
+                    background-color: $bg-tertiary-dark;
+                    color: $font-color-dark;
+                }
             }
 
 

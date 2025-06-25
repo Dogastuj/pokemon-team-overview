@@ -41,15 +41,23 @@
         <div class="pokemon-stats">
             <h5>Base stats :</h5>
 
-            <div *ngFor="let stat of (pokemon.baseStats | keyvalue)" class="stat-wrapper">
-                <p>{{ stat.key }}:</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" [style.width.%]="(stat.value / 255) * 100"
-                        [attr.aria-valuenow]="stat.value" aria-valuemin="0" aria-valuemax="200">
-                        {{ stat.value }}
+            <ng-container *ngFor="let statName of ['HP', 'Atk', 'Def', 'SpA', 'SpD', 'Spe']">
+                <div class="stat-wrapper">
+                    <p>{{ statName }}:</p>
+                    <div class="progress">
+                        <div
+                            class="progress-bar"
+                            role="progressbar"
+                            [style.width.%]="(pokemon.baseStats[statName] / 255) * 100"
+                            [attr.aria-valuenow]="pokemon.baseStats[statName]"
+                            aria-valuemin="0"
+                            aria-valuemax="200"
+                        >
+                            {{ pokemon.baseStats[statName] }}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
 
         </div>
 
