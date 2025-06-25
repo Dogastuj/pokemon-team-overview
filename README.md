@@ -1,6 +1,6 @@
 # PokemonTeamOverview
 
-An application that provide detailed view of a pokemon team from a pokepaste
+An application that provides a detailed view of a Pokémon team from a Poképaste.
 
 [Pokemon Team Overview](https://dogastuj.github.io/pokemon-team-overview/)
 
