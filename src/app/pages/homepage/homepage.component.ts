@@ -19,6 +19,9 @@ export class HomepageComponent {
             ) { }
 
   sendInput(pokepaste: string) {
+    if (pokepaste.length > 0 && !pokepaste.endsWith('\n')) {
+      pokepaste += '\n';
+    }
       this.sharePokpasteService.changePaste(pokepaste);
 
 
